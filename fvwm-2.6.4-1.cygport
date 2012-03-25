@@ -1,0 +1,8 @@
+
+HOMEPAGE="http://www.fvwm.org/"
+SRC_URI="ftp://ftp.fvwm.org/pub/fvwm/version-2/${P}.tar.bz2"
+
+CYGCONF_ARGS="
+	--enable-htmldoc
+	--disable-gtk
+"
