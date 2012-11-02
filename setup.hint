@@ -1,6 +1,0 @@
-category: X11
-requires: libcairo2 libfontconfig1 libfribidi0 libglib2.0_0 libICE6 libiconv2 libintl8 libpng14 libreadline7 librsvg2_2 libSM6 libX11_6 libXcursor1 libXext6 libXft2 libXinerama1 libXpm4 libXrender1 perl perl-Tk xterm
-sdesc: "Window manager for X11"
-ldesc: "Fvwm is a window manager for X11. It is designed to minimize 
-memory consumption, provide a 3D look to window frames, and a virtual 
-desktop."
