@@ -1,13 +1,39 @@
 NAME="fvwm"
 VERSION=2.6.5
-RELEASE=1
+RELEASE=2
 CATEGORY="X11"
 SUMMARY="Window manager for X11"
 DESCRIPTION="FVWM is an extremely powerful ICCCM-compliant multiple virtual
 desktop window manager for the X Window system."
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="ftp://ftp.fvwm.org/pub/fvwm/version-2/${P}.tar.bz2"
+SRC_URI="ftp://ftp.fvwm.org/pub/fvwm/version-2/fvwm-${VERSION}.tar.bz2"
+SRC_URI+="
+	fedora/fvwm.desktop
+	fedora/fvwm-xdg-menu.py
+"
+PATCH_URI="
+	fedora/fvwm-0001-Change-html-viewer-to-xdg-open.patch
+	fedora/fvwm-0002-Use-mimeopen-instead-of-EDITOR.patch
+	fedora/fvwm-0003-Enable-auto-generate-menus-in-the-Setup-Form-config-.patch
+	fedora/fvwm-0004-Increase-number-of-mouse-buttons-supported.patch
+	fedora/fvwm-0005-FvwmPager-be-more-careful-with-window-labels.patch
+	fedora/fvwm-0006-Comply-with-Debian-s-hardening-rules.patch
+"
 
 REQUIRES="xterm"
 
 CYGCONF_ARGS="--enable-htmldoc --disable-gtk"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	# requires old Gtk1 Perl bindings
+	rm -f ${D}/usr/share/fvwm/perllib/FVWM/Module/Gtk.pm
+	rm -f ${D}/usr/libexec/fvwm/${VERSION}/FvwmGtkDebug
+
+	newbin ${S}/fvwm-xdg-menu.py fvwm-xdg-menu
+
+	insinto /usr/share/xsessions
+	doins ${S}/fvwm.desktop
+}
