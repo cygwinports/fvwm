@@ -1,0 +1,10 @@
+--- origsrc/fvwm-2.6.6/fvwm.desktop	2016-10-10 00:22:40.954445000 -0500
++++ src/fvwm-2.6.6/fvwm.desktop	2016-10-10 00:45:45.610292400 -0500
+@@ -4,6 +4,7 @@ Name=FVWM
+ Comment=ICCCM-compliant multiple virtual desktop window manager
+ Exec=fvwm
+ Terminal=False
++Icon=fvwm
+ 
+ [Window Manager]
+ SessionManaged=true
